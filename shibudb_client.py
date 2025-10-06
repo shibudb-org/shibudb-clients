@@ -289,7 +289,8 @@ class ShibuDbClient:
         self.reader = None
         self.writer = None
         self.authenticated = False
-        self.current_user = None
+        # Ensure current_user is always a safe dictionary to avoid attribute errors
+        self.current_user = {"username": "", "role": "", "permissions": {}}
         self.current_space = None
         self._connect()
 
@@ -350,6 +351,18 @@ class ShibuDbClient:
 
         if response.get("status") == "OK":
             self.authenticated = True
+            # Capture basic user context for downstream operations
+            # Prefer values returned by server if available; otherwise use provided credentials
+            user_info = response.get("user") or {}
+            username_from_response = user_info.get("username") if isinstance(user_info, dict) else None
+            role_from_response = user_info.get("role") if isinstance(user_info, dict) else None
+            permissions_from_response = user_info.get("permissions") if isinstance(user_info, dict) else None
+
+            self.current_user = {
+                "username": username_from_response or username,
+                "role": role_from_response or user_info.get("role", "" ) if isinstance(user_info, dict) else "",
+                "permissions": permissions_from_response or user_info.get("permissions", {}) if isinstance(user_info, dict) else {},
+            }
             logger.info(f"Successfully authenticated as {username}")
         else:
             raise AuthenticationError(f"Authentication failed: {response.get('message', 'Unknown error')}")
