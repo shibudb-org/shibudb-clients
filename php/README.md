@@ -19,6 +19,24 @@ A comprehensive PHP client for ShibuDb database with support for **PHP 5.6+**. F
 
 ## Installation
 
+### Composer (recommended)
+
+```bash
+composer require podcopic-labs/shibudb-client-php
+```
+
+Then in your PHP code:
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+
+$client = new ShibuDbClient('localhost', 4444);
+$client->authenticate('admin', 'admin');
+```
+
+### Manual
+
 1. Copy `ShibuDbClient.php` to your project:
    ```bash
    cp ShibuDbClient.php /path/to/your/project/
