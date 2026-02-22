@@ -1,5 +1,5 @@
 {
-    "name": "podcopic-labs/shibudb-client-php",
+    "name": "shibudb-org/shibudb-client-php",
     "description": "A comprehensive PHP client for ShibuDb database with authentication, key-value operations, vector similarity search, and connection pooling",
     "version": "1.0.4",
     "type": "library",
@@ -10,10 +10,10 @@
             "email": "support@shibudb.com"
         }
     ],
-    "homepage": "https://github.com/Podcopic-Labs/ShibuDb",
+    "homepage": "https://github.com/shibudb-org/shibudb-clients",
     "support": {
-        "issues": "https://github.com/Podcopic-Labs/ShibuDb/issues",
-        "source": "https://github.com/Podcopic-Labs/ShibuDb"
+        "issues": "https://github.com/shibudb-org/shibudb-clients/issues",
+        "source": "https://github.com/shibudb-org/shibudb-clients"
     },
     "keywords": [
         "database",

@@ -22,7 +22,7 @@ A comprehensive PHP client for ShibuDb database with support for **PHP 5.6+**. F
 ### Composer (recommended)
 
 ```bash
-composer require podcopic-labs/shibudb-client-php
+composer require shibudb-org/shibudb-client-php
 ```
 
 Then in your PHP code:
