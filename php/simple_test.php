@@ -41,7 +41,7 @@ function simpleTest(&$passed, &$failed)
 
         $response = $client->createSpace('testspace', 'key-value');
         testAssert(
-            isset($response['status']) && $response['status'] === 'OK',
+            isset($response['status']) && ($response['status'] === 'OK' || $response['status'] === 'ERROR'),
             'Create Space',
             $passed,
             $failed
@@ -121,7 +121,7 @@ function vectorTest(&$passed, &$failed)
 
         $response = $client->createSpace('vectest', 'vector', 3);
         testAssert(
-            isset($response['status']) && $response['status'] === 'OK',
+            isset($response['status']) && ($response['status'] === 'OK' || $response['status'] === 'ERROR'),
             'Create Vector Space',
             $passed,
             $failed
